@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Interface Repository</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the interface for repository.</Description>
+			<Shortcut>interRepository</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+using System;
+using System.Collections.Generic;
+
+namespace API.Models.$InterfaceName$
+{
+    public interface I$InterfaceName$Repositorio
+    {
+        $InterfaceName$s Adicionar($InterfaceName$s $InterfaceName$);
+        $InterfaceName$s Atualizar($InterfaceName$s $InterfaceName$);
+        $InterfaceName$s Remover(int $InterfaceName$Id);
+        $InterfaceName$s ObterPorId (int $InterfaceName$Id);
+        IEnumerable<$InterfaceName$s> ObterTodos();
+    }
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>InterfaceName</ID>
+					<ToolTip>Inform the name for interface from repository.</ToolTip>
+					<Default>InterfaceName</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

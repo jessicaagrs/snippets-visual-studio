@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Model</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the model for project.</Description>
+			<Shortcut>model</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.Models.$ModelName$
+{
+    public class $ModelName$s
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public string Grupo { get; set; }
+    }
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>ModelName</ID>
+					<ToolTip>Inform the name for model.</ToolTip>
+					<Default>ModelName</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

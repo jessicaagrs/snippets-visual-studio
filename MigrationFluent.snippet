@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Migration</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the migration using Fluent Migrator.</Description>
+			<Shortcut>migrFluent</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				using FluentMigrator;
+
+                namespace SIPEF.AUDIT.Infra.Data.Migracoes
+                {
+                  [Migration($Identificador$)]
+                  public class _$Identificador$_Name_Migration : Migration
+                  {
+					public override void Down()
+					{
+						
+					}
+				
+					public override void Up()
+					{
+						Insert.IntoTable("Table").Row(new { Column1 = 1, Column2 = "Value"});
+                      
+						Update.Table("Table")
+							.Set(new { Column1 = "New Value" })
+							.Where(new { Column2 = 33 });
+							
+					    Create.Table("Table")
+						  .WithColumn("Id").AsInt32().Identity()
+						  .WithColumn("Column").AsInt32();
+						
+						Delete.FromTable("MyTable").Row(new { MyColumn = "123" }); 
+						
+						Alter.Table("Table")
+							.AlterColumn("Column1").AsString(12).NotNullable();
+					}
+                   }
+                }]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>Identificador</ID>
+					<ToolTip>Inform the migration format YYYYmmddHHmm.</ToolTip>
+					<Default>190001012359</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

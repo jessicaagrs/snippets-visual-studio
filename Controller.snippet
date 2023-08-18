@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Controller</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create controller for API.</Description>
+			<Shortcut>controller</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+
+namespace API.Controllers.$ControllerName$
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class $ControllerName$Controller : ControllerBase
+    {
+        private I$ControllerName$Service _$ControllerName$Service;
+
+        public $ControllerName$Controller(I$ControllerName$Service $ControllerName$Service)
+        {
+            _$ControllerName$Service = $ControllerName$Service;
+        }
+
+        [HttpGet()]
+        public IActionResult Get()
+        {
+            try
+            {
+                var $ControllerName$s = _$ControllerName$Service.ObterTodos();
+                return Ok($ControllerName$s);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpPost()]
+        public IActionResult Post([FromBody] $ControllerName$s $ControllerName$)
+        {
+            try
+            {
+                var $ControllerName$s = _$ControllerName$Service.Adicionar($ControllerName$);
+                return Ok($ControllerName$s);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete()]
+        [Route("/$ControllerName$/{$ControllerName$Id}")]
+        public IActionResult Delete(int $ControllerName$Id)
+        {
+            try
+            {
+                var $ControllerName$s = _$ControllerName$Service.Remover($ControllerName$Id);
+                return Ok($ControllerName$s);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut()]
+        public IActionResult Put([FromBody] $ControllerName$s $ControllerName$)
+        {
+            try
+            {
+                var $ControllerName$s = _$ControllerName$Service.Atualizar($ControllerName$);
+                return Ok($ControllerName$s);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>ControllerName</ID>
+					<ToolTip>Create an API controller with the main request actions.</ToolTip>
+					<Default>ControllerName</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>TryCatch Form</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the try catch with form.</Description>
+			<Shortcut>tryCatchForm</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+ try
+{
+    var $dados$ = _nameRepositorioRepositorio.ObterTodos();
+    var form = new nameForm<nameModel>($dados$);
+    if (form.ShowDialog(this) == DialogResult.OK)
+    {
+        var pegaDadosForm = form.model;
+    }
+}
+catch (Exception ex)
+{
+    XtraMessageBox.Show(ex.Message);
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>dados</ID>
+					<ToolTip>Dados que retornam do repositório.</ToolTip>
+					<Default>dados</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

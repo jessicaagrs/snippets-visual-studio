@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Repository</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the repository.</Description>
+			<Shortcut>repository</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
+
+namespace API.Infra.$RepositoryName$
+{
+    public class $RepositoryName$Repositorio : I$RepositoryName$Repositorio
+    {
+        private readonly EFDBContext _dbContext;
+
+        public $RepositoryName$Repositorio(EFDBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public $RepositoryName$s Adicionar($RepositoryName$s $RepositoryName$)
+        {
+            _dbContext.$RepositoryName$.Add($RepositoryName$);
+            _dbContext.SaveChanges();
+            return $RepositoryName$;
+        }
+
+        public $RepositoryName$s Atualizar($RepositoryName$s $RepositoryName$)
+        {
+            _dbContext.$RepositoryName$.Update($RepositoryName$);
+            _dbContext.SaveChanges();
+            return $RepositoryName$;
+        }
+
+        public $RepositoryName$s Remover(int $RepositoryName$Id)
+        {
+            var $RepositoryName$ = ObterPorId($RepositoryName$Id);
+
+            if ($RepositoryName$ != null)
+            {
+                _dbContext.$RepositoryName$.Remove($RepositoryName$);
+                _dbContext.SaveChanges();
+                return $RepositoryName$;
+            }
+            return null;
+        }
+
+        public $RepositoryName$s ObterPorId(int $RepositoryName$Id)
+        {
+            var $RepositoryName$ = _dbContext.$RepositoryName$.FirstOrDefault(t => t.Id == $RepositoryName$Id);
+
+            return $RepositoryName$;
+        }
+
+        public IEnumerable<$RepositoryName$s> ObterTodos()
+        {
+            return _dbContext.$RepositoryName$.ToList();
+        }
+
+    }
+
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>RepositoryName</ID>
+					<ToolTip>Inform the name for repository.</ToolTip>
+					<Default>RepositoryName</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

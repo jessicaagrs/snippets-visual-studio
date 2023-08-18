@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Service</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the service.</Description>
+			<Shortcut>service</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+﻿using API.Models.$ServiceName$;
+using System;
+using System.Collections.Generic;
+
+namespace API.Services.$ServiceName$
+{
+    public class $ServiceName$Service : I$ServiceName$Service
+    {
+        private readonly I$ServiceName$Repositorio _$ServiceName$Repositorio;
+
+        public $ServiceName$Service(I$ServiceName$Repositorio $ServiceName$Repositorio)
+        {
+            _$ServiceName$Repositorio = $ServiceName$Repositorio;
+        }
+
+        public $ServiceName$s Adicionar($ServiceName$s $ServiceName$)
+        {
+            if ($ServiceName$ is null)
+                throw new Exception("Dados inválidos, favor revisar o preenchimento");
+
+           var $ServiceName$s =  _$ServiceName$Repositorio.Adicionar($ServiceName$);
+            return $ServiceName$s;
+        }
+
+        public $ServiceName$s Atualizar($ServiceName$s $ServiceName$)
+        {
+            if ($ServiceName$ is null)
+                throw new Exception("Dados inválidos, favor revisar o preenchimento");
+
+           var $ServiceName$s = _$ServiceName$Repositorio.Atualizar($ServiceName$);
+            return $ServiceName$s;
+        }
+
+        public $ServiceName$s Remover(int $ServiceName$Id)
+        {
+            if ($ServiceName$Id > 0)
+            {
+                var $ServiceName$s = _$ServiceName$Repositorio.Remover($ServiceName$Id);
+                return $ServiceName$s;
+            }
+            return null;
+                
+        }
+
+        public IEnumerable<$ServiceName$s> ObterTodos()
+        {
+            return _$ServiceName$Repositorio.ObterTodos();
+        }
+
+    }
+}
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>ServiceName</ID>
+					<ToolTip>Inform the name for service.</ToolTip>
+					<Default>ServiceName</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

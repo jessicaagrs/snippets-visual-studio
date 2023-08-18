@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Sql</Title>
+			<Author>Jessica Aguiar</Author>
+			<Description>Create the query for report.</Description>
+			<Shortcut>query</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+var sql = @"
+                        SELECT 
+                              P.[Id] as PrestacaoContaId
+                              ,[DataInicioExercicio]
+                              ,[DataFimExercicio]
+                              ,[RazaoSocial]
+                              ,[CNPJ]
+                              ,[IE]
+                              ,[IM]
+                              ,[Suframa]
+                              ,[CEP]
+                              ,[UF]
+                              ,[MunicipioId]
+                              ,[Bairro]
+                              ,[Endereco]
+                              ,[Numero]
+                              ,[Complemento] as ComplementoEnd
+                              ,[Tel1]
+                              ,[Tel2]
+                              ,[Email]
+                              ,[DescricaoContrato]
+                              ,C.[Nome] Municipio     
+                          FROM  [PrestacaoContas] P
+                               Left Join
+                                [Cidades] C ON  P.[MunicipioId]=C.[Id] 
+
+                          Where P.[Id]={0}".TSQLToAnsi();
+
+      return _context.Database.SqlQuery<Domain.Modelos.$Model$.$Model$>(sql, prestacaoConta).SingleOrDefault();
+				]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>Model</ID>
+					<ToolTip>Inform the name for model.</ToolTip>
+					<Default>Model</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+
